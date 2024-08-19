@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5">
+    <h1>Users List</h1>
+
+    <div th:each="user : ${users}" class="alert alert-info mt-2">
+        <p th:text="${user.username} + ' ' + ${user.email}"></p>
+        <!--
+            Need to make list of user's posts
+            <a th:href="'/blog/' + ${post.id}" class="btn btn-warning">Full Post</a>
+        -->
+        <a th:href="'/user/' + ${user.id} + '/delete'" class="btn btn-danger">Delete User</a>
+    </div>
+
+</div>
+
+<div th:insert="blocks/footer :: footer"></div>
+</body>
+</html>
